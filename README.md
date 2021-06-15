@@ -57,7 +57,7 @@ The purpose of this phase is scan and learn what exploit Blue is vulnerable to. 
     
     * *How many ports are open with a port number under 1000?*
         
-        - ![Near the top of the nmap output, we see columns representing the open ports (what ports are available), the service (application name and version) those ports are offering and what OS versions they are running.](C:\Users\Frankie\Desktop\THM-Blue-Writeup-in-Layman-s-Terms\Task_1_Image_1.jpg)
+        - Near the top of the nmap output, we see columns representing the open ports (what ports are available), the service (application name and version) those ports are offering and what OS versions they are running.![This image is nmap output!](Task_1_Image_1.jpg)
 
             \> We are simply looking for ports with a port number less than 1000. **As we can see above in the screenshot of the `nmap` output, there are 3.**
 
@@ -69,7 +69,7 @@ The purpose of this phase is scan and learn what exploit Blue is vulnerable to. 
 
                 - While this may not seem like anything particularly important, this single line gives us a ton of information pertaining to the exploit Blue is hiding.
 
-            2. ![After copying and pasting this line into Google, we can see on the website Exploit Database that Blue’s vulnerability is `Remote Code Execution (RCE)`.](C:\Users\Frankie\Desktop\THM-Blue-Writeup-in-Layman-s-Terms\Task_1_Image_2.jpg)
+            2. After copying and pasting this line into Google, we can see on the website Exploit Database that Blue’s vulnerability is `Remote Code Execution (RCE)`.![Windows vulnerability MS17-010](Task_1_Image_2.jpg)
 
             3. As the name of this exploit exactly suggests, an attacker has the ability to execute arbitrary commands or code on a remote machine. RCE actually belongs to a broader class of `arbitrary code execution (ACE)` vulnerabilities.
 
@@ -95,7 +95,7 @@ The goal of this stage is to exploit the vulnerability we found in the previous 
 
         *Before you move on, shout out Rapid7 for making this incredible tool for us to use.*
 
-        ![Now, you should see something like this in your terminal!](C:\Users\Frankie\Desktop\THM-Blue-Writeup-in-Layman-s-Terms\Task_2_Image_1.jpg)
+        Now, you should see something like this in your terminal!![metasploit startup](Task_2_Image_1.jpg)
 
     * In the shell prompt, type `search ms17-010` to search for the RCE exploit we found earlier. You should see 6 matching modules appear. While there are many directories beginning with “exploit…” as the question suggests, we are looking for module 3 in particular.
     
@@ -131,7 +131,7 @@ The goal of this stage is to exploit the vulnerability we found in the previous 
 
     * Your next move is to type `run` to begin the scanner.
 
-        - ![Now we have proof that Blue is vulnerable to MS17-10: Remote Code Execution!](C:\Users\Frankie\Desktop\THM-Blue-Writeup-in-Layman-s-Terms\Task_2_Image_2.jpg)
+        - Now we have proof that Blue is vulnerable to MS17-10: Remote Code Execution!![Proof!](Task_2_Image_2.jpg)
 
     * Now, let’s figure out how to run our exploit now (remember that these are the modules whose names start with `exploit`).
 
@@ -149,7 +149,7 @@ The goal of this stage is to exploit the vulnerability we found in the previous 
 
         - To set our `LHOST` option, it’s the same setup as setting the `RHOST` option, but instead of using the target IP (the IP of the web-based VM we are running from the TryHackMe site), we will be using the private IP seen in the OpenVPN Connect profile screen.
 
-            - ![You can see this after scrolling down in the OpenVPN window that shows your active connection, as squared in black in the following image.](C:\Users\Frankie\Desktop\THM-Blue-Writeup-in-Layman-s-Terms\Task_2_Image_3.jpg)
+            - You can see this after scrolling down in the OpenVPN window that shows your active connection, as squared in black in the following image.![OpenVpn](Task_2_Image_3.jpg)
 
                 - So, the final command to type into the Metasploit shell is set `LHOST [Your_Private_IP]`.
 
@@ -212,7 +212,7 @@ This task involves mainly upgrading our standard `windows shell` to `meterpreter
 
     * So, type `ps` to list out all the running processes. 
     
-        * We are looking for a process that is running at **NT AUTHORITY\SYSTEM**. Although TryHackMe recommends a process near the bottom of the list, I’m going to use `winlogon.exe` since it is a more stable and active process. winlogon.exe has a process ID (PID) of 644. ![Here is a picture of what I’m looking at](C:\Users\Frankie\Desktop\THM-Blue-Writeup-in-Layman-s-Terms\Task_3_Image_1.jpg).
+        * We are looking for a process that is running at **NT AUTHORITY\SYSTEM**. Although TryHackMe recommends a process near the bottom of the list (such as `cmd.exe`), I’m going to use `winlogon.exe` since it is a more stable and active process. winlogon.exe has a process ID (PID) of 644. The picture below marks `cmd.exe` with a red line in case you want to use that.![Here is a picture of what I’m looking at.](Task_3_Image_1.jpg)
 
 3. The next step now says we need to use the `migrate` command to do exactly as the name suggests, move our winlogon.exe process elsewhere! This essentially means moving our meterpreter instance in memory to another process space, prolonging its session lifetime amongst other things.
 
