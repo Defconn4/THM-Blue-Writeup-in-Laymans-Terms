@@ -1,4 +1,4 @@
-# Frank Costantino - TryHackMe | Blue Writeup in Layman's Terms
+# Defconn4 - TryHackMe | Blue Writeup in Layman's Terms
 
 ## Some Quick Notes:
 
@@ -316,7 +316,7 @@ This task involves mainly upgrading our standard `windows shell` to `meterpreter
 
     5. [How to install Kali Linux on Virtual Box.](https://www.youtube.com/watch?v=V_Payl5FlgQ)
 
-### I, Frank Costantino, am the sole author of this tutorial. Please feel free to contact me for questions regarding the distribution of this tutorial by anyone other than myself. I do not take credit for any other resources, videos, or articles I mentioned in this tutorial.
+### I, Defconn4, am the sole author of this tutorial. Please feel free to contact me for questions regarding the distribution of this tutorial by anyone other than myself. I do not take credit for any other resources, videos, or articles I mentioned in this tutorial.
 
 
 
